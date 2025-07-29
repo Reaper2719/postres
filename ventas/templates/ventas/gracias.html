@@ -1,0 +1,85 @@
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Resumen de Ventas</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background: #f0f0f0;
+    }
+    .total {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .volver {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .volver a {
+      text-decoration: none;
+      background: #0077cc;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Resumen de {{ usuario|title }}</h2>
+
+    <table>
+      <tr>
+        <th>Sabor</th>
+        <th>Vendidos</th>
+        <th>Faltan</th>
+      </tr>
+      {% for sabor in faltan.keys %}
+      <tr>
+        <td>{{ sabor|title }}</td>
+        <td>{{ vendidos.sabor|default:0 }}</td>
+        <td>{{ faltan.sabor }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <div class="total">
+      💰 Total ganado: ${{ dinero|intcomma }} COP
+    </div>
+
+    <div class="volver">
+      <a href="{% url 'registrar_venta' %}">Registrar otra venta</a>
+    </div>
+  </div>
+</body>
+</html>

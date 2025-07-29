@@ -1,0 +1,87 @@
+<!-- ventas/templates/ventas/registro.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro de Venta</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 400px;
+      margin: 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      margin: 10px 0 5px;
+      display: block;
+      font-weight: 600;
+    }
+    select, input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      background: #0077cc;
+      color: white;
+      font-size: 16px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Registrar Venta</h2>
+    <form method="post">
+      {% csrf_token %}
+      
+      <label>¿Quién eres?</label>
+      <select name="usuario" required>
+        <option value="" disabled selected>Selecciona tu nombre</option>
+        <option value="diego">Diego</option>
+        <option value="sahara">Sahara</option>
+      </select>
+
+      <label>Sabor del postre</label>
+      <select name="sabor" required>
+        <option value="" disabled selected>Selecciona el sabor</option>
+        <option value="milo">Milo</option>
+        <option value="maracuya">Maracuyá</option>
+        <option value="limon">Limón</option>
+        <option value="mora">Mora</option>
+        <option value="lulo">Lulo</option>
+      </select>
+
+      <label>Cantidad vendida</label>
+      <input type="number" name="cantidad" min="1" required>
+
+      <button type="submit">Registrar</button>
+    </form>
+  </div>
+</body>
+</html>
